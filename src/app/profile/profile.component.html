@@ -1,0 +1,94 @@
+
+
+
+<!--
+
+<div class="container">
+<div *ngIf="islogin">
+	
+	<div *ngIf="user_data.provider == 'GOOGLE' || user_data.provider=='FACEBOOK'">
+	<img [src]="user_data.picture" width="200">
+	<h1 class="mat-display-3">
+		{{ user_data.username }}
+	</h1>
+
+	<p>
+		{{ user_data.email }}
+	</p>
+</div>
+
+
+
+<div *ngIf="user_data.provider  ==  'CUSTOM'">
+	<h1 class="display-4">Name{{ customdata.f_name }} {{ customdata.l_name }} </h1>
+	<p>
+		
+		Username{{  customdata.username }}
+	</p>
+
+</div>
+
+
+</div>
+
+</div>
+-->
+<mat-drawer-container>
+	<mat-drawer mode="side" opened #sidebar  [@shrinknav]="control">
+		<div fxLayout="column" fxLayoutAlign="space-between"  style="height:98%;">
+		<div style="border:1px solid red;">
+			<img class="ml-3 mt-3" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" [width]="control =='maximize' ? '60' : '30'">
+			<mat-expansion-panel class="mb-3" style="box-shadow:none!important;" *ngIf="control =='maximize'">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<h2 class="p-0 m-0" style="font-weight:normal;font-size:18px;">Ravi kumar</h2><br>
+						<small>7mdkarimul@gmail.com</small>
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				</mat-expansion-panel>
+				<mat-divider [class]="control =='maximize' ? '' : 'mt-3' "></mat-divider>
+		</div>
+		<div fxLayout="column" fxLayoutAlign='space-evenly' style="height:80%;">
+			<div *ngFor="let data of menu">
+				<button [matTooltip]="control== 'maximize' ? data.label : '' " class="ml-2 py-2" mat-button mat-flat-button *ngIf="!data.submenu" [routerLink]="data.link">
+        <mat-icon class="mr-2" >poll</mat-icon>
+		<label  *ngIf="control =='maximize'">	{{ data.label }} </label>
+		</button>
+				<mat-expansion-panel [hideToggle]="control =='minimize' " *ngIf="data.submenu" style=";box-shadow: none!important;">
+					<mat-expansion-panel-header>
+						<mat-icon [matTooltip]="control== 'maximize' ? data.label : '' "  [class]="control == 'maximize' ? 'mr-3' : '' ">{{ data.icon }}</mat-icon>
+						<label [matTooltip]="control== 'maximize' ? data.label : '' " *ngIf="control =='maximize'"> {{ data.label }} </label>
+					</mat-expansion-panel-header>
+					<div *ngFor=" let item of data.submenu_items">
+						<a [matTooltip]="control== 'maximize' ? item.label : '' " class="text-left w-100"  mat-button mat-flat-button [routerLink]="item.link"><mat-icon class="mr-3">{{ item.icon }}</mat-icon> {{ item.label }}</a>
+					</div>
+				</mat-expansion-panel>
+			</div>
+		</div>
+
+		<div>
+			<button mat-button mat-flat-button class="p-3 text-left" fxFlex="100%">
+				<mat-icon class="mr-3">logout</mat-icon>
+				<label *ngIf="control =='maximize'">Logout</label>
+			</button>
+		</div>
+	</div>
+
+
+	</mat-drawer>
+	<mat-drawer-content  [@shrinksection]="control">
+		<mat-toolbar color="primary">
+			<div>
+				<button mat-icon-button (click)="sidebar.toggle()" class="mr-3 light-btn">
+					<mat-icon>menu</mat-icon>
+				</button>
+
+				<button mat-icon-button (click)="sidenavcontrol()" class="mr-3 light-btn" *ngIf="sidebar.opened">
+				<mat-icon>all_out</mat-icon>
+				</button>
+
+			</div>
+		</mat-toolbar>
+		<router-outlet></router-outlet>
+	</mat-drawer-content>
+</mat-drawer-container>

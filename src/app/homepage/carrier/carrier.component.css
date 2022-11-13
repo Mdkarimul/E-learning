@@ -1,0 +1,18 @@
+.bg-image{
+	background-image: url(../../../assets/images/pattern.png);
+	background-size:50%;
+}
+
+.office{
+	background-image: url(../../../assets/images/office.jpg);
+	background-size:cover;
+}
+
+.meeting{
+	background-image: url(../../../assets/images/meeting.jpg);
+	background-size:cover;
+}
+
+.img-height{
+	height:320px;
+}

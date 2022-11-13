@@ -1,0 +1,48 @@
+
+<div style="height:99%;"fxLayout="row" fxLayoutAlign="center center" class="bg-light">
+	<mat-card fxFlex="440px" class="p-4" @fade>
+		<mat-card-content>
+			<div fxLayoutAlign="center">
+			<img src="assets/images/logo.png" width="200">
+		    </div>
+			<form autocomplete="off" fxLayout="column" [formGroup]="loginform" (submit)="login()">
+				<mat-form-field class="mb-3">
+					<mat-label>Username</mat-label>
+					<input type="" matInput formControlName="username">
+					
+					<mat-error *ngIf="username.hasError('required')">
+						This field is required
+					</mat-error>
+					<mat-error *ngIf="username.hasError('email') &&  !username.hasError('required')">
+						Enter a valid email
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="mb-2">
+					<mat-label>Password</mat-label>
+					<input type="password" matInput formControlName="password">
+					<mat-error *ngIf="password.hasError('required')">
+						This field is required
+					</mat-error>
+
+					<mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+						Atleast 6 characters required!
+					</mat-error>
+
+					<mat-error *ngIf="password.hasError('maxlength') && !password.hasError('required')">
+						Maximum  15 characters !
+					</mat-error>
+				</mat-form-field>
+
+				<div fxLayoutAlign="space-between" class="mt-2 mb-5">
+					<button [disabled]="loginform.invalid" mat-button mat-raised-button color="primary" class="px-4 py-1" type="submit">Login</button>
+					<button mat-button color="warn" class="px-4 py-1" type="button" routerLink="/forget-password">Froget password</button>
+				</div>
+
+          <button mat-button mat-flat-button color="primary" class="mb-3 py-1" (click)="signInWithFB()" type="button">Facebook</button>
+          <button mat-button mat-flat-button color="warn" class="mb-4 py-1" (click)="signInWithGoogle()" type="button">Google</button>
+          <button mat-button color="primary" type="button">Create An Account</button>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

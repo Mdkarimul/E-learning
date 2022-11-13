@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="main" ngClass="py-5" ngClass.xs="py-1" ngClass.sm="py-1"  (mouseover)="rubberstart()" (mouseout)="rubberend()">
+	<div class="btn-box" fxLayoutAlign="space-between"  [@rubber]="rubberstate">
+		 <button mat-fab color="accent" (click)="prev()">
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+
+         <button mat-fab color="accent" (click)="next()">
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+	</div>
+<div fxFlex="60%" fxFlex.xs="90%" fxFlex.sm="90%" style="overflow: hidden;">
+	<div ngClass="py-3" ngClass.xs="py-0" ngClass.sm="py-0"></div>
+	<div *ngFor="let data of feedback;index as i">
+
+		<div *ngIf="c_index ==i && nextstate " @prevfeedback>
+			<p [innerHTML]="data.feedback" class="description text-center">
+		
+		    </p>
+		    <div ngClass.xs="py-3" ngClass.sm="py-3"></div>
+		    <div fxLayoutAlign="end center">
+		    <div>
+		    <h4 class="p-0 m-0 mr-4">{{ data.username }}</h4>
+		    <address>{{ data.location }}</address>
+		     </div>
+		    <img [src]="data.image" ngClass="img-desc" ngClass.xs="img-mobile" ngClass="img-mobile">
+		    </div>
+		</div>
+
+
+
+		<div *ngIf="c_index ==i && prevstate " @nextfeedback>
+			<p [innerHTML]="data.feedback" class="description text-center">
+		
+		    </p>
+		    <div fxLayoutAlign="end center">
+		    <div>
+		    <h4 class="p-0 m-0 mr-4">{{ data.username }}</h4>
+		    <address>{{ data.location }}</address>
+		     </div>
+		    <img [src]="data.image" width="94px" height="94px">
+		    </div>
+		</div>
+		
+	</div>
+	<div class="py-3"></div>
+</div>
+</div>

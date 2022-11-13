@@ -1,0 +1,90 @@
+<div fxLayout="row" fxLayoutAlign="center">
+	<div fxFlex="80%" class="py-5">
+ <mat-tab-group mat-align-tabs="center">
+ <mat-tab *ngFor="let tab of tabs"  [label]="tab.label">
+ 	 <div class="pt-5" fxLayout="row wrap" fxLayoutAlign="space-between">
+      <mat-card fxFlex="32%" fxFlex.xs="100%" fxFlex.sm="100%" *ngFor="let data of tab.content;index as i" class="mb-5">
+        <div mat-card-image style="overflow:hidden;">
+          <img src="{{ data.thumbnail }}" (mouseover)="zoomIn(i)" (mouseout)="zoomOut(i)" [@zoom]="index == i ? control : '' " width="100%">
+        </div>
+        <mat-card-content>
+          <h1 class="subtitle p-0 m-0">{{ data.title }}</h1>
+          <p class="description p-0 m-0">{{ data.description }}</p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions fxLayoutAlign="space-between">
+          <button mat-button fxLayoutAlign="center center">
+            <mat-icon>account_circle</mat-icon>
+            <label>{{ data.nos }} students</label>
+          </button>
+
+          <button mat-button fxLayoutAlign="center center">
+            <mat-icon>local_library</mat-icon>
+            <label>{{ data.nol }} Lessions</label>
+          </button>
+
+          <button mat-button fxLayoutAlign="center center">
+            <mat-icon>monetization_on</mat-icon>
+            <label>{{ data.fee }}</label>
+          </button>
+
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+ </mat-tab>
+ <mat-tab label="Action">
+ 	<div class="py-4">
+ 		<button mat-button mat-raised-button color="warm" *ngFor="let tab of tabs;index as i" class="mr-4" (click)="delete(i)">
+ 			<label>{{ tab.label }}</label>
+ 			<mat-icon>delete</mat-icon>
+ 		</button>
+
+ 		<br><br>
+
+ 		<form autocomplete="off" [formGroup]="tabform" (submit)="addtab()" fxLayout="column" fxLayoutGap="40px" style="width:350px;">
+  <mat-form-field class="">
+    <mat-label>Tab name</mat-label>
+    <input matInput type="text" formControlName="label">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Thumbnail path</mat-label>
+    <input matInput type="text" formControlName="thumbnail">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="description">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Nos</mat-label>
+    <input matInput type="number" formControlName="nos" >
+  </mat-form-field>
+
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Nol</mat-label>
+    <input matInput type="number" formControlName="nol">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Fee</mat-label>
+    <input matInput type="number" formControlName="fee">
+  </mat-form-field>
+
+<button mat-button mat-flat-button color="primary">Add to tab</button>
+
+</form>
+ 	</div>
+ </mat-tab>
+</mat-tab-group>
+
+	</div>
+</div>

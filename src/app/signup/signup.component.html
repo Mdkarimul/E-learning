@@ -1,0 +1,58 @@
+<div style="height: 99%;margin-top:5px;" fxLayout="row" fxLayoutAlign="center center" class="bg-light">
+  <mat-card fxFlex="440px" class="p-4" @fade>
+    <mat-card-content>
+      <div fxLayoutAlign="center">
+        <img src="assets/images/logo.png" width="200">
+      </div>
+
+      <form fxLayout="column" [formGroup]="signupform" (submit)="signup()">
+        <div fxLayoutAlign="space-between">
+          <mat-form-field>
+            <mat-label>Firstname</mat-label>
+            <input matInput formControlName="f_name" required="required">
+            <mat-error *ngIf="f_name.hasError('required')"> 
+            	This field is required !
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Lastname</mat-label>
+            <input matInput formControlName="l_name" required="required">
+             <mat-error *ngIf="l_name.hasError('required')"> 
+            	This field is required !
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" required="required">
+           <mat-error *ngIf="username.hasError('required')"> 
+            	This field is required !
+            </mat-error>
+            <mat-error *ngIf="username.hasError('email')">
+            	Enter a valid email!
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required="required">
+          <mat-error *ngIf="password.hasError('required')"> 
+            	This field is required !
+            </mat-error>
+            <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+            	Atleast 6 characters required !
+            </mat-error>
+            <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('required')">
+            	Max 15 characters required !
+            </mat-error>
+        </mat-form-field>
+        <div class="mt-2" fxLayout="column" fxLayoutGap="16px">
+          <button mat-button mat-raised-button color="accent" [disabled]="signupform.invalid" class="py-1 px-4">Sign up</button>
+          <button mat-button mat-flat-button class="py-1 px-4" color="primary" type="button" (click)="socialsignup('FACEBOOK')">Facebook</button>
+          <button type="button" mat-button mat-flat-button class="py-1 px-4" color="warn" (click)="socialsignup('GOOGLE')">Google</button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

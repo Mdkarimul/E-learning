@@ -1,0 +1,41 @@
+.box-desc{
+	height:500px;
+	overflow:hidden;
+	position: relative;
+}
+
+.box-mobile{
+	height:300px;
+	overflow:hidden;
+	position: relative;
+}
+
+.img-desc{
+	position: absolute;
+	top:-35%;
+	z-index: -1;
+}
+
+.img-mobile{
+	position: absolute;
+	top:0;
+	z-index: -1;
+}
+
+.opacity-desc{
+	width:100%;
+	height:100%;
+	background-color: rgba(0,0,0,0.6);
+}
+
+
+.opacity-mobile{
+	width:100%;
+	height:270px;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.btn{
+	position:relative;
+	top:60px;
+}

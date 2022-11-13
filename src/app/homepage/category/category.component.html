@@ -1,0 +1,43 @@
+<div fxLayoutAlign="center" class="bg-light">
+	<div style="width:80%;" fxLayout="column" fxLayoutGap="20px">
+		<div title="manage vertical space"></div>
+		<div title="manage vertical space"></div>
+
+		<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+			<div fxFlex.xs="100%" fxFlex.sm="100%">
+			<p class="description p-0 m-0">COURSE CATEGORY</p>
+			<h1 class="p-0 m-0" ngClass="title" ngClass.xs="subtitle" ngClass.sm="subtitle">Browse trending topic</h1>
+		</div>
+			<button mat-button mat-flat-button color="accent" ngClass="py-1 px-4" ngClass.sm="py-0 px-2 mt-3"  ngClass.xs="py-0 px-2 mt-3">View more</button>
+		</div>
+		<div title="manage vertical space"></div>
+		<div fxLayout="row wrap" fxLayoutAlign="space-between">
+			
+			<mat-card fxLayout="column" fxLayoutAlign="center center" class="px-2" fxLayoutGap="15px" fxLayoutGap.xs="18px" fxLayoutGap.sm="18px" *ngFor="let data of categories;index as i" fxFlex="22%" fxFlex.xs="90%" fxFlex.sm="45%" class="mb-5"  (mouseover)="heightIn(i)" (mouseout)="heightOut(i)">
+				<div title="manage vertical space" ></div>
+				<div class="card-overlay" [style.background]="data.color" [@height]="index== i ? control : '' "></div>
+				<mat-icon
+				 [style]="
+				 {
+				 'font-size':'40px',
+				 'color': control == 'heightIn' && index==i ? 'white' : data.color,
+				 'position':'relative'
+
+				}">{{ data.icon }}</mat-icon>
+				<div title="manage vertical space"></div>
+				<mat-card-header style="position:relative;">
+					<mat-card-title  [style.color]="control =='heightIn' && index ==i ? 'white' : 'black' ">
+					{{ data.name}}
+				</mat-card-title>
+				</mat-card-header>
+				<div title="manage vertical space"></div>
+			</mat-card>
+
+			
+
+
+		</div>
+		<div title="manage vertical space"></div>
+		<div title="manage vertical space"></div>
+	</div>
+</div>
