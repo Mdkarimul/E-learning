@@ -185,7 +185,11 @@ sidenavcontrol(): void
   {
   this.router.navigateByUrl('');
   }
+  }
 
+
+  logout(){
+    this.authControl.logout();
   }
 
 }

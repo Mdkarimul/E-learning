@@ -13,14 +13,14 @@ export class SearchComponent implements OnInit {
  private text = 'Design with Ednuv';
  private i = 0;
  public   cursor = '|';
- public clear: any;
+ public clear:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.typeWritter();
+   this.clear =  setInterval(() => {
   this.typeWritter();
-  this.clear =  setInterval(() => {
-  this.typeWritter();
-  }, 3000);
+  }, 300);
   }
 
   typeWritter(): void {
@@ -33,10 +33,7 @@ export class SearchComponent implements OnInit {
    }
    this.title += this.text[this.i];
    this.i++;
-   setTimeout(() => {
-   this.typeWritter();
-   }, 100);
-
+  
    }
    else{
    this.cursor = '';

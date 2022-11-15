@@ -125,6 +125,14 @@
               "devServerTarget": "education:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/education",
+            "netlifyToken": "ukNSnPmYuKSsSsWiPUgZpdnt_SCG3jjlFIAc51MrkYU",
+            "siteId": "c3ebba6f-edd6-4318-93fe-425db20a3954"
+          }
         }
       }
     }

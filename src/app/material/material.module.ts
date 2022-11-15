@@ -31,7 +31,6 @@ const material = [
       MatSidenavModule,
       MatExpansionModule,
       MatTooltipModule
-
 ];
 
 @NgModule({

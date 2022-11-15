@@ -1,34 +1,31 @@
+<mat-toolbar  fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutAlign.xs="space-between center" fxLayoutAlign.sm="space-between center" [@stickynav]="sticky" ngClass="py-4" ngClass.xs="py-1" ngClass.sm="py-1" style="z-index: 1000;">
+  <img src="assets/images/logo.png" width="165px" height="40px">
+   <div [fxHide.xs]="navToggler" [fxHide.sm]="navToggler" fxFlexOrder.xs='1' fxFlexOrder.sm='1' fxLayout="row wrap" ngClass.xs="py-4" ngClass.sm="py-4">
+     <a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="">Home</a>
+     <a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="courses">Courses</a>
+     <a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="blog">Blog</a>
+     <a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="about">About us</a>
+     <a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="contact">Contact us</a>
+     <a  mat-button mat-raised-button color="accent" class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" [matMenuTriggerFor]="account" [matMenuTriggerData]="{username:islogin ? username : ''}">Account</a>
+   </div>
+   <div class="cart-cont"  fxLayout="row" fxLayoutGap="20px">
+     <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+       <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+       <mat-icon (click)="navToggle()" aria-hidden="false" aria-label="Example home icon" fxHide="true" fxHide.xs="false" fxHide.sm="false">menu</mat-icon>
+   </div>
+ </mat-toolbar>
 
-  <mat-toolbar fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutAlign.xs="space-between center" fxLayoutAlign.sm="space-between center" [@stickynav]="sticky" ngClass="py-4" ngClass.xs="py-1" ngClass.sm="py-1" style="z-index: 10;">
-   <img src="assets/images/logo.png" width="165px" height="40px">
-    <div [fxHide.xs]="navToggler" [fxHide.sm]="navToggler" fxFlexOrder.xs='1' fxFlexOrder.sm='1' fxLayout="row wrap" ngClass.xs="py-4" ngClass.sm="py-4">
-    	<a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="">Home</a>
-    	<a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="courses">Courses</a>
-    	<a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="blog">Blog</a>
-    	<a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="about">About us</a>
-    	<a href="#home" mat-button class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" routerLink="contact">Contact us</a>
-    	<a  mat-button mat-raised-button color="accent" class="font-family-popins" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" [matMenuTriggerFor]="account" [matMenuTriggerData]="{username:islogin ? username : ''}">Account</a>
-    </div>
-    <div  fxLayout="row" fxLayoutGap="20px">
-    	<mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
-        <mat-icon (click)="navToggle()" aria-hidden="false" aria-label="Example home icon" fxHide="true" fxHide.xs="false" fxHide.sm="false">menu</mat-icon>
-    </div>
-  </mat-toolbar>
-
-  <!--start account dropdown menu-->
+ <!--start account dropdown menu-->
 <mat-menu #account class="mt-2">
-	<ng-template matMenuContent let-user="username">
-	<a  (click)="navigate(user !='' ? 'logout' : 'login' )" mat-menu-item>{{ user !='' ? 'logout' : 'login' }}</a>
-	<a  mat-menu-item routerLink="user != 'profile' ? : 'signup' ">{{ user !="" ? "Hi "+user : 'Register' }}</a>
+ <ng-template matMenuContent let-user="username">
+ <a  (click)="navigate(user !='' ? 'logout' : 'login')" mat-menu-item>{{ user !='' ? 'logout' : 'login' }}</a>
+ <a  mat-menu-item [routerLink]="user !='' ? 'profile'  : 'signup' ">{{ user !="" ? "Hi "+user : 'Register' }}</a>
 </ng-template>
 </mat-menu>
-  <!--end accound drop down menu-->
+ <!--end accound drop down menu-->
 
-  <button mat-fab class="scroll-top" *ngIf="scrolltop_icon" @fade (click)="gotop()">
-    <mat-icon>arrow_upward</mat-icon>
-  </button>
- 
-
+ <button mat-fab class="scroll-top" *ngIf="scrolltop_icon" @fade (click)="gotop()">
+   <mat-icon>arrow_upward</mat-icon>
+ </button>
 
 

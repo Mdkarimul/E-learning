@@ -1,38 +1,32 @@
 
 
 
-<!--
+
 
 <div class="container">
 <div *ngIf="islogin">
 	
-	<div *ngIf="user_data.provider == 'GOOGLE' || user_data.provider=='FACEBOOK'">
+	<!-- <div *ngIf="user_data.provider == 'GOOGLE' || user_data.provider=='FACEBOOK'">
 	<img [src]="user_data.picture" width="200">
 	<h1 class="mat-display-3">
 		{{ user_data.username }}
 	</h1>
-
 	<p>
 		{{ user_data.email }}
 	</p>
-</div>
-
+</div> -->
 
 
 <div *ngIf="user_data.provider  ==  'CUSTOM'">
 	<h1 class="display-4">Name{{ customdata.f_name }} {{ customdata.l_name }} </h1>
-	<p>
-		
+	<p>	
 		Username{{  customdata.username }}
 	</p>
-
+</div>
+</div>
 </div>
 
 
-</div>
-
-</div>
--->
 <mat-drawer-container>
 	<mat-drawer mode="side" opened #sidebar  [@shrinknav]="control">
 		<div fxLayout="column" fxLayoutAlign="space-between"  style="height:98%;">
@@ -68,7 +62,7 @@
 
 		<div>
 			<button mat-button mat-flat-button class="p-3 text-left" fxFlex="100%">
-				<mat-icon class="mr-3">logout</mat-icon>
+				<mat-icon class="mr-3" (click)="logout()">logout</mat-icon>
 				<label *ngIf="control =='maximize'">Logout</label>
 			</button>
 		</div>

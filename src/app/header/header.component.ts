@@ -38,7 +38,7 @@ this.scrolltop_icon = false;
 this.islogin = this.authControl.islogin();
 if (this.islogin)
 {
-  // const data = this.authControl.userdata;
+   const data = this.authControl.userdata;
 
  if (this.authControl.userdata.provider == 'GOOGLE' || this.authControl.userdata.provider == 'FACEBOOK')
  {
@@ -46,8 +46,8 @@ if (this.islogin)
  }
  else
  {
- this.username =  JSON.parse(atob(this.authControl.userdata.access_token.split('.')[1]));
- this.username =  this.username.data.f_name + ' ' + this.username.data.l_name;
+//  this.username =  JSON.parse(atob(this.authControl.userdata.access_token.split('.')[1]));
+//  this.username =  this.username.data.f_name + ' ' + this.username.data.l_name;
  }
 }
    }
@@ -67,7 +67,6 @@ if (this.islogin)
 
 
   navigate(path: string): void{
-
     if (path == 'login')
     {
     this.router.navigateByUrl('/login');

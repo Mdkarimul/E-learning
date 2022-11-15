@@ -11,7 +11,7 @@ export class CounterComponent implements OnInit {
   constructor() { }
 
   public no_of_ins = 0;
-  public no_of_clients = 0;
+  public no_of_clients =0;
   public no_of_projects = 0;
   public no_of_branches = 0;
 

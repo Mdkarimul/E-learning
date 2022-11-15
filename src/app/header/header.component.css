@@ -1,8 +1,6 @@
 mat-toolbar{
 	background:white;
 	height: auto;
-
-
 }
 
 .scroll-top{
@@ -10,4 +8,8 @@ mat-toolbar{
 	bottom: 20px;
 	right:20px;
 	z-index: 30000;
+}
+
+.cart-cont mat-icon{
+	cursor: pointer;
 }

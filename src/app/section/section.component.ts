@@ -9,14 +9,14 @@ import { NavcontrolService } from '../services/navcontrol.service';
 })
 export class SectionComponent implements OnInit {
 
-  constructor(private rout: Router, private navcontrol: NavcontrolService) { }
+  constructor(private router: Router, private navcontrol: NavcontrolService) { }
 
   ngOnInit(): void {
   }
 
   getroutpath(): void
   {
-  this.navcontrol.routpath(this.rout.url);
+  this.navcontrol.routpath(this.router.url);
   }
 
 }

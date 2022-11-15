@@ -17,7 +17,6 @@ public userdata: any = '';
   {
   this.userdata = JSON.parse(localStorage.user);
   return true;
-
   }
   else
   {
@@ -29,33 +28,32 @@ public userdata: any = '';
   {
   if (this.userdata.provider == 'GOOGLE')
   {
+    alert("g");
   this.socialAuth.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID).then(() => {
  this.socialAuth.signOut(true).then(() => {
  localStorage.removeItem('user');
  this.router.navigateByUrl('/login');
  });
-
   });
   }
 
-  if (this.userdata.provider == 'FACEBOOK')
+ else if(this.userdata.provider == 'FACEBOOK')
   {
- this.socialAuth.signOut(true).then(() => {
+    alert("f");
+      this.socialAuth.signOut(true).then(() => {
+        localStorage.removeItem('user');
+        this.router.navigateByUrl('/login');
+        });
+   
+  }
+
+
+  else if (this.userdata.provider == 'CUSTOM')
+  {
+    alert();
  localStorage.removeItem('user');
  this.router.navigateByUrl('/login');
- });
+  }
   }
 
-
-  if (this.userdata.provider == 'CUSTOM')
-  {
-
- localStorage.removeItem('user');
- this.router.navigateByUrl('/login');
-
-  }
-
-
-
-  }
 }

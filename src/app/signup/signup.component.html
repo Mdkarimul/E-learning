@@ -50,6 +50,10 @@
           <button mat-button mat-raised-button color="accent" [disabled]="signupform.invalid" class="py-1 px-4">Sign up</button>
           <button mat-button mat-flat-button class="py-1 px-4" color="primary" type="button" (click)="socialsignup('FACEBOOK')">Facebook</button>
           <button type="button" mat-button mat-flat-button class="py-1 px-4" color="warn" (click)="socialsignup('GOOGLE')">Google</button>
+          <div fxLayoutAlign="space-between">
+            <button mat-button color="primary" routerLink="/login" type="button">Already Have An Account</button>
+            <button mat-button color="primary" routerLink="/" type="button">Back</button>
+          </div>       
         </div>
 
       </form>

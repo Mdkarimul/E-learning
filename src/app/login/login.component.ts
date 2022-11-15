@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
   {
   this.router.navigateByUrl('/profile');
   }
-
   }
 
   signInWithGoogle(): void {
@@ -59,9 +58,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // signOut(): void {
-   // this.authService.signOut();
-  // }
+  signOut(): void {
+   this.authService.signOut();
+  }
 
   refresh_token(): void
   {
@@ -80,7 +79,6 @@ export class LoginComponent implements OnInit {
    {
    console.log(userdata);
    // redirect
-   alert('go');
    const data = {
    username : userdata.name,
    email : userdata.email,
