@@ -49,7 +49,6 @@ export const sticky = trigger('stickynav', [
         boxShadow: '0 8px 16px 0 #ddd',
         width : '100%'
     })),
-
     transition('start=>end', [
     style({
     top: '-100px',
