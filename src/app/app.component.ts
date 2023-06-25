@@ -15,7 +15,6 @@ public control = true;
 
   hidenav(): void
   {
-
   this.navcontrol.subject.subscribe((response: any) => {
   const afterprofile = /\/profile\/*/;
   if  (response == '/login' || response == '/signup' || response == '/forget-password' || response == '/profile' ||  afterprofile.test(response))

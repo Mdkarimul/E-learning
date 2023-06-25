@@ -12,7 +12,7 @@
     <div  fxLayout="row" fxLayoutGap="20px">
     	<mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
         <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
-        <mat-icon (click)="navToggle()" aria-hidden="false" aria-label="Example home icon" fxHide="true" fxHide.xs="false" fxHide.sm="false">menu</mat-icon>
+        <mat-icon style="cursor: pointer;" (click)="navToggle()" aria-hidden="false" aria-label="Example home icon" fxHide="true" fxHide.xs="false" fxHide.sm="false">menu</mat-icon>
     </div>
   </mat-toolbar>
 
@@ -28,7 +28,10 @@
   <button mat-fab class="scroll-top" *ngIf="scrolltop_icon" @fade (click)="gotop()">
     <mat-icon>arrow_upward</mat-icon>
   </button>
- 
+
+<!-- 
+  <ngx-loading-bar [includeSpinner]="false"></ngx-loading-bar>
+  -->
 
 
 

@@ -6,7 +6,6 @@ import { LoginComponent } from './login.component';
 import { AllInOneModule } from '../all-in-one/all-in-one.module';
 
 
-
 @NgModule({
   declarations: [
     LoginComponent
@@ -15,6 +14,7 @@ import { AllInOneModule } from '../all-in-one/all-in-one.module';
     CommonModule,
     LoginRoutingModule,
     AllInOneModule,
+
 
   ],
 

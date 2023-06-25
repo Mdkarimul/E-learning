@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class HeaderComponent implements OnInit {
-public sticky = 'start';
+public sticky:string = 'start';
 public navToggler = true;
 public islogin = false;
 public username: any;
@@ -30,8 +30,6 @@ whenscroll(){
 this.sticky = 'start';
 this.scrolltop_icon = false;
 	}
-
-
 }
   constructor(private authControl: AuthControlService, private router: Router) {
 

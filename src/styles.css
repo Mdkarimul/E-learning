@@ -5,6 +5,17 @@
 html, body { height: 100%;scroll-behavior: smooth; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #ddd;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #ff4081;
+}
+
 .bg-light{
 	background-color: #F7F9FB;
 }

@@ -1,7 +1,7 @@
 
-<!-- <mat-progress-bar mode="determinate" [value]="loader.value$ | async" color="accent" style="height:3px;"></mat-progress-bar> -->
+<!-- <mat-progress-bar *ngIf="control" mode="determinate" [value]="loader.value$ | async" color="accent" style="height:3px;"></mat-progress-bar> -->
 
-<!-- <ngx-loading-bar color="#FF4081" [includeSpinner]="false"></ngx-loading-bar> -->
+<ngx-loading-bar color="#FF4081" *ngIf="control" [includeSpinner]="false"></ngx-loading-bar>
 
 
 <app-header *ngIf="control"></app-header>

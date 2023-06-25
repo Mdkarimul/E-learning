@@ -12,16 +12,12 @@ export class FeaturedComponent implements OnInit {
   constructor() { }
 
   public images: any[] = [
-
-
       {
       path : 'assets/images/fa.jpg',
       title: 'Html tutorial',
       description: 'Html stands for hypertext markup language',
       link: 'https://google.com'
       },
-
-
        {
       path : 'assets/images/fb.jpg',
       title: 'CSS tutorial',
@@ -46,11 +42,8 @@ export class FeaturedComponent implements OnInit {
   ];
 
 public index = 0;
-
-
   public btnState = 'down';
   public c_index = 0;
-
   ngOnInit(): void {
 
   this.slideShows();
