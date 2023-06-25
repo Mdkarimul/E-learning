@@ -13,11 +13,6 @@ import { AllInOneModule } from '../all-in-one/all-in-one.module';
     CommonModule,
     LoginRoutingModule,
     AllInOneModule,
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 7789c88234e9a6c513b4d6f6a2e72c29ad38b20e
   ],
 })
 export class LoginModule { }

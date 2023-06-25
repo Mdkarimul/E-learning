@@ -5,33 +5,20 @@
 html, body { height: 100%;scroll-behavior: smooth; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-<<<<<<< HEAD
 
 ::-webkit-scrollbar{
   width:8px;
 }
-=======
-::-webkit-scrollbar{
-  width:8px;
-}
-
->>>>>>> 7789c88234e9a6c513b4d6f6a2e72c29ad38b20e
 ::-webkit-scrollbar-track{
   background-color: #ddd;
 }
 ::-webkit-scrollbar-thumb{
-<<<<<<< HEAD
   background-color: #FF4081;
 }
 
 
 
 
-=======
-  background-color: #ff4081;
-}
-
->>>>>>> 7789c88234e9a6c513b4d6f6a2e72c29ad38b20e
 .bg-light{
 	background-color: #F7F9FB;
 }
