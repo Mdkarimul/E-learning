@@ -40,30 +40,27 @@ import {
     MatInputModule,
     SocialLoginModule,
     HttpClientModule
-
-
-
-
   ],
      providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '842972865728-o9bm0se1kkp5b2avn6js1ad6gn9qcv9l.apps.googleusercontent.com'
-            )
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('757246378252830')
+      {
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+          autoLogin: false,
+          providers: [
+            {
+              id: GoogleLoginProvider.PROVIDER_ID,
+              provider: new GoogleLoginProvider("842972865728-o9bm0se1kkp5b2avn6js1ad6gn9qcv9l.apps.googleusercontent.com")
+            },
+            {
+              id: FacebookLoginProvider.PROVIDER_ID,
+              provider: new FacebookLoginProvider('2617781558372672')
+            }
+          ],
+          onError: (err) => {
+            console.error(err);
           }
-        ]
-      } as SocialAuthServiceConfig,
-    }
+        } as SocialAuthServiceConfig,
+      }
   ],
   bootstrap: [AppComponent]
 })

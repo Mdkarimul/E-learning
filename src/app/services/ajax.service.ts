@@ -13,16 +13,13 @@ public errormsg: any;
   constructor(private http: HttpClient) { }
 
   getauthkey(): any{
- const ajax =  this.http.get<any>('http://localhost/angular/newauthkey');
+ const ajax =  this.http.get<any>('http://localhost/rest_api/angular-signup-with-php/authkey');
  ajax.subscribe((response: any) => {
-  console.log(response.auth_key);
-  const verify = this.verifyToken(response.auth_key, 'http://localhost/angular/newauthkey');
+  const verify = this.verifyToken(response.auth_key, 'http://localhost/rest_api/angular-signup-with-php/authkey');
   if (verify)
 {
 	sessionStorage.setItem('auth_key', response.auth_key);
-
 }
-
  });
   }
 
@@ -41,22 +38,22 @@ public errormsg: any;
  }
  }
 
-
- loginuser(formdata: any): Observable<any>
+ //Observable<any>
+ loginuser(formdata: any):Observable<any>
  {
  const key = formdata.get('auth_key');
  const username = formdata.get('username');
  const password = formdata.get('password');
- alert(password);
- const url = 'http://localhost/angular/login?auth_key=' + key + '&username=' + username + '&password=' + password;
+ //?auth_key='+key+'&username='+username+'&password='+password
+ const url = 'http://localhost/rest_api/angular-signup-with-php/login?auth_key='+key+'&username='+username+'&password='+password;
  const ajax = this.http.get<any>(url).pipe(catchError(this.handleError));
- return ajax;
+  return ajax;
  }
 
 
  signup(formdata: any): Observable<any>
  {
-const ajax =  this.http.post<any>('http://localhost/angular/signup', formdata).pipe(catchError(this.handleError));
+const ajax =  this.http.post<any>('http://localhost/rest_api/angular-signup-with-php/signup',formdata).pipe(catchError(this.handleError));
 return ajax;
  }
 
@@ -76,21 +73,13 @@ return ajax;
 const ajax = this.http.post<any>('http://localhost/angular/resetpassword', formdata).pipe(catchError(this.handleError));
 return ajax;
  }
-
-
-
-
-
  handleError(error: HttpErrorResponse): Observable<any> {
-
 if (error.error instanceof ErrorEvent)
 {
 	this.errormsg = 'Check your internate connection';
 }
 else
 {
-
-
  if (error.status == 409)
  {
  this.errormsg = error.error.message;
@@ -100,17 +89,11 @@ else
  {
  this.errormsg = 'Access denied !';
  }
-
  if (error.status == 404)
  {
  this.errormsg = error.error.message;
  }
 }
-
 return  throwError(this.errormsg);
  }
-
-
-
-
 }

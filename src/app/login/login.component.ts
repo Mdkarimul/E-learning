@@ -6,8 +6,7 @@ import {  Router } from '@angular/router';
 import { AuthControlService } from '../services/auth-control.service';
 import { AjaxService } from '../services/ajax.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,20 +16,24 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: SocialAuthService, private router: Router, private authControl: AuthControlService, private ajax: AjaxService, private fb: FormBuilder, private alert: MatSnackBar) { this.islogin(); }
+  constructor(private authService: SocialAuthService, private router: Router, private authControl: AuthControlService, private ajax: AjaxService, private fb: FormBuilder, private alert: MatSnackBar) {  
+     this.islogin();
+  }
 
+ //login username validation
   get username(): any{
   return this.loginform.get('username');
   }
-
+//login password validation
   get password(): any
   {
   return  this.loginform.get('password');
   }
 
+  //custom login form
   public loginform = this.fb.group({
-  username : ['', [Validators.email, Validators.required]],
-  password : ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]]
+  username : ['7mdkarimul@gmail.com', [Validators.email, Validators.required]],
+  password : ['12345678', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]]
   });
 
   ngOnInit(): void {
@@ -47,8 +50,7 @@ export class LoginComponent implements OnInit {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
-    this.refresh_token();
-
+      this.refresh_token();
     });
   }
 
@@ -58,9 +60,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  signOut(): void {
-   this.authService.signOut();
-  }
+//this code is already defined on another page
+  // signOut(): void {
+  //  this.authService.signOut();
+  // }
 
   refresh_token(): void
   {
@@ -72,12 +75,10 @@ export class LoginComponent implements OnInit {
   getdata(): void
   {
   this.authService.authState.subscribe(
-
    (userdata: any) => {
-
    if (userdata != null)
    {
-   console.log(userdata);
+   //console.log(userdata);
    // redirect
    const data = {
    username : userdata.name,
@@ -85,13 +86,12 @@ export class LoginComponent implements OnInit {
    picture : userdata.photoUrl,
    provider : userdata.provider
    };
-
    localStorage.setItem('user', JSON.stringify(data));
    this.router.navigateByUrl('/profile');
+   }else{
+  alert("authentication failed !");
    }
-
    }
-
   );
   }
 
@@ -107,19 +107,15 @@ export class LoginComponent implements OnInit {
 
    const ajax = this.ajax.loginuser(formdata);
    ajax.subscribe((response: any) => {
-     console.log(response);
-     const isvalid =  this.ajax.verifyToken(response.access_token, 'http://localhost/angular/login');
+     const isvalid =  this.ajax.verifyToken(response.access_token,'http://localhost/rest_api/angular-signup-with-php/login');
      if (isvalid)
     {
-           const data = {
-      provider: 'CUSTOM',
-      access_token: response.access_token,
+      const data = {
+           provider: 'CUSTOM',
+           access_token: response.access_token,
               };
-
            localStorage.setItem('user', JSON.stringify(data));
            this.router.navigateByUrl('/profile');
-
-
     }
     else
     {
@@ -129,7 +125,6 @@ export class LoginComponent implements OnInit {
 (error: any) => {
   console.log(error);
 }
-
    );
   }
 

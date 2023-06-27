@@ -6,9 +6,6 @@ import { transition } from '@angular/animations';
 import { query } from '@angular/animations';
 
 
-
-
-
 export const shrinksection = trigger('shrinksection', [
 state('minimize', style({
   marginLeft : '60px'

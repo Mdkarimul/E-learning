@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { NavcontrolService } from './services/navcontrol.service';
@@ -9,6 +10,7 @@ import { NavcontrolService } from './services/navcontrol.service';
 })
 export class AppComponent {
 public control = true;
+  title: any;
   constructor(public loader: LoadingBarService, private navcontrol: NavcontrolService ){
   this.hidenav();
   }

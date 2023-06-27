@@ -14,5 +14,6 @@ import { AllInOneModule } from '../all-in-one/all-in-one.module';
     LoginRoutingModule,
     AllInOneModule,
   ],
+  providers: [],
 })
 export class LoginModule { }

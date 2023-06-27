@@ -11,7 +11,7 @@ export class AuthControlService {
 public userdata: any = '';
   constructor(private socialAuth: SocialAuthService, private router: Router) { }
 
-  islogin(): any
+  islogin():boolean
   {
   if (localStorage.getItem('user') != null)
   {
@@ -28,7 +28,6 @@ public userdata: any = '';
   {
   if (this.userdata.provider == 'GOOGLE')
   {
-    alert("g");
   this.socialAuth.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID).then(() => {
  this.socialAuth.signOut(true).then(() => {
  localStorage.removeItem('user');
@@ -36,24 +35,17 @@ public userdata: any = '';
  });
   });
   }
-
  else if(this.userdata.provider == 'FACEBOOK')
   {
-    alert("f");
       this.socialAuth.signOut(true).then(() => {
         localStorage.removeItem('user');
         this.router.navigateByUrl('/login');
         });
-   
   }
-
-
   else if (this.userdata.provider == 'CUSTOM')
   {
-    alert();
  localStorage.removeItem('user');
  this.router.navigateByUrl('/login');
   }
   }
-
 }

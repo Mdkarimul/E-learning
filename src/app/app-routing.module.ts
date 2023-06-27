@@ -5,7 +5,6 @@ const routes: Routes = [
 
 { path: '', loadChildren: () => import('./homepage/mhome/mhome.module').then(m => m.MhomeModule) },
 
-
 { path: 'blog', loadChildren: () => import('./blog/mblog/mblog.module').then(m => m.MblogModule) },
 
 { path: 'courses', loadChildren: () => import('./courses/mcourse/mcourse.module').then(m => m.McourseModule) },

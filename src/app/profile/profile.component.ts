@@ -12,11 +12,7 @@ import { shrinknav, shrinksection } from '../animation';
 })
 export class ProfileComponent implements AfterViewInit {
   constructor(private router: Router, private authControl: AuthControlService, private device: DeviceDetectorService) {
-
-
-
     this.secure_profile();
-
    }
    @ViewChild('sidebar')sidebar: any;
 
@@ -26,36 +22,28 @@ export class ProfileComponent implements AfterViewInit {
 
 
 public menu: any[] = [
-
 {
   submenu : false,
   label  : 'Dashboard',
   icon : 'leaderboard',
   link : 'dashboard'
-
 },
-
-
 {
   submenu : true,
   label  : 'Social',
   icon : 'feed',
  submenu_items : [
-
    {
   label  : 'Facebook',
   icon : 'facebook',
   link : 'facebook'
    },
-
     {
   label  : 'Twitter',
   icon : 'account_circle',
   link : 'twitter'
    },
-
   ]
-
 },
 
 
@@ -75,17 +63,8 @@ public menu: any[] = [
    icon : 'location_city',
    link : 'Amerika'
    }
-
-
   ]
-
 },
-
-
-
-
-
-
 {
   submenu : true,
   label  : 'Social',
@@ -105,10 +84,7 @@ public menu: any[] = [
    },
 
   ]
-
 },
-
-
 {
   submenu : true,
   label : 'Branches',
@@ -125,16 +101,8 @@ public menu: any[] = [
    icon : 'location_city',
    link : 'Amerika'
    }
-
-
   ]
-
 }
-
-
-
-
-
 ];
 
 
@@ -165,7 +133,6 @@ sidenavcontrol(): void
 
   secure_profile(): void
   {
-
   if (this.authControl.islogin())
   {
  this.user_data =  this.authControl.userdata;
@@ -179,15 +146,12 @@ sidenavcontrol(): void
     this.customdata =  JSON.parse(atob(this.user_data.access_token.split('.')[1]));
     this.customdata = this.customdata.data;
   }
-
   }
   else
   {
   this.router.navigateByUrl('');
   }
   }
-
-
   logout(){
     this.authControl.logout();
   }

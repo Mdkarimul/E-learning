@@ -44,8 +44,8 @@ if (this.islogin)
  }
  else
  {
-//  this.username =  JSON.parse(atob(this.authControl.userdata.access_token.split('.')[1]));
-//  this.username =  this.username.data.f_name + ' ' + this.username.data.l_name;
+  this.username =  JSON.parse(atob(this.authControl.userdata.access_token.split('.')[1]));
+  this.username =  this.username.data.f_name + ' ' + this.username.data.l_name;
  }
 }
    }

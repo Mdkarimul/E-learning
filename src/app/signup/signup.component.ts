@@ -16,7 +16,6 @@ import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-logi
 export class SignupComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private ajax: AjaxService, private router: Router, private alert: MatSnackBar, private authService: SocialAuthService) {
-
 this.ajax.getauthkey();
   }
 
@@ -37,11 +36,10 @@ this.ajax.getauthkey();
   }
 
   public signupform = this.fb.group({
-
-f_name: ['', [Validators.required]],
-l_name: ['', [Validators.required]],
-username: ['', [Validators.required, Validators.email]],
-password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
+f_name: ['karimul', [Validators.required]],
+l_name: ['islam', [Validators.required]],
+username: ['7mdkarimul@gmail.com', [Validators.required, Validators.email]],
+password: ['12345678', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
 
   });
 
@@ -59,7 +57,8 @@ password: ['', [Validators.required, Validators.minLength(6), Validators.maxLeng
   }
   const ajax =  this.ajax.signup(formdata);
   ajax.subscribe((response: any) => {
- const token = this.ajax.verifyToken(response.access_token, 'http://localhost/angular/signup');
+    console.log(response);
+ const token = this.ajax.verifyToken(response.access_token,'http://localhost/rest_api/angular-signup-with-php/signup');
  if (token)
         {
         const data = {
@@ -70,9 +69,7 @@ password: ['', [Validators.required, Validators.minLength(6), Validators.maxLeng
         this.router.navigateByUrl('/profile');
         console.log(response);
         }
-
  },
-
 (error: any) => {
 	this.alert.open(error, 'close', {
 	duration: 4000,
@@ -100,7 +97,6 @@ password: ['', [Validators.required, Validators.minLength(6), Validators.maxLeng
 
   socialdata(): void{
    this.authService.authState.subscribe((user: any) => {
-      console.log(user);
       const f_name = user.firstName;
       const l_name = user.lastName;
       const username = user.email;
