@@ -1,11 +1,6 @@
-
-
-
-
-
+<!-- 
 <div class="container">
 <div *ngIf="islogin">
-	
 	<div *ngIf="user_data.provider == 'GOOGLE' || user_data.provider=='FACEBOOK'">
 	<img [src]="user_data.picture" width="200">
 	<h1 class="mat-display-3">
@@ -15,8 +10,6 @@
 		{{ user_data.email }}
 	</p>
 </div>
-
-
 <div *ngIf="user_data.provider  ==  'CUSTOM'">
 	<h1 class="display-4">Name{{ customdata.f_name }} {{ customdata.l_name }} </h1>
 	<p>	
@@ -24,27 +17,49 @@
 	</p>
 </div>
 </div>
-</div>
+</div> -->
 
 
-<mat-drawer-container>
+<mat-drawer-container *ngIf="islogin">
+	<!-- sode nav codig -->
 	<mat-drawer mode="side" opened #sidebar  [@shrinknav]="control">
 		<div fxLayout="column" fxLayoutAlign="space-between"  style="height:98%;">
-		<div style="border:1px solid red;">
-			<img class="ml-3 mt-3" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" [width]="control =='maximize' ? '60' : '30'">
+		
+			<div *ngIf="user_data.provider  ==  'GOOGLE' || user_data.provider  ==  'FACEBOOK'">
+				<mat-accordion >
+				<mat-expansion-panel (opened)="panelOpenState = true"
+				(closed)="panelOpenState = false" style="box-shadow:none!important;" *ngIf="control =='maximize'">
+					<mat-expansion-panel-header>
+						<mat-panel-title class="">
+							<img class="" [src]="user_data.picture" [width]="control =='maximize' ? '60' : '30'">
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+				
+                     <h6 class="p-0 m-0" style="font-weight:normal;font-size:18px;">{{ user_data.username }}</h6>
+					 <small>{{ user_data.email }}</small>
+					</mat-expansion-panel >
+				</mat-accordion>
+					<mat-divider [class]="control =='maximize' ? '' : '' "></mat-divider>
+			</div>
+
+
+			<div *ngIf="user_data.provider  ==  'CUSTOM'" style="border:1px solid red;">
+			<img class="ml-3 mt-3" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" [width]="control =='maximize' ? '60px' : '30px'">
 			<mat-expansion-panel class="mb-3" style="box-shadow:none!important;" *ngIf="control =='maximize'">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<h2 class="p-0 m-0" style="font-weight:normal;font-size:18px;">Ravi kumar</h2><br>
-						<small>7mdkarimul@gmail.com</small>
+						<h6 class="p-0 m-0" style="font-weight:normal;font-size:18px;">{{ customdata.f_name }} {{ customdata.l_name }}</h6>
+						<small>{{  customdata.username }}</small>
 					</mat-panel-title>
 				</mat-expansion-panel-header>
 				</mat-expansion-panel>
 				<mat-divider [class]="control =='maximize' ? '' : 'mt-3' "></mat-divider>
 		</div>
-		<div fxLayout="column" fxLayoutAlign='space-evenly' style="height:80%;">
-			<div *ngFor="let data of menu">
-				<button [matTooltip]="control== 'maximize' ? data.label : '' " class="ml-2 py-2" mat-button mat-flat-button *ngIf="!data.submenu" [routerLink]="data.link">
+
+		
+		<div fxLayout="column" fxLayoutAlign='space-evenly' style="height:80%;border:1px solid yellow;">
+			<div *ngFor="let data of menu" style="border: 1px solid green;">
+				<button fxFlexA [matTooltip]="control== 'maximize' ? data.label : '' " class="ml-2 py-2" mat-button mat-flat-button *ngIf="!data.submenu" [routerLink]="data.link" fxFlex="100%">
         <mat-icon class="mr-2" >poll</mat-icon>
 		<label  *ngIf="control =='maximize'">	{{ data.label }} </label>
 		</button>
@@ -67,9 +82,8 @@
 			</button>
 		</div>
 	</div>
-
-
 	</mat-drawer>
+
 	<mat-drawer-content  [@shrinksection]="control">
 		<mat-toolbar color="primary">
 			<div>

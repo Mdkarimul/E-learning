@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SocialAuthService } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
-
+import { signup } from '../interfaces/http.interface';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -56,8 +56,7 @@ password: ['12345678', [Validators.required, Validators.minLength(6), Validators
   formdata.append(key, this.signupform.value[key]);
   }
   const ajax =  this.ajax.signup(formdata);
-  ajax.subscribe((response: any) => {
-    console.log(response);
+  ajax.subscribe((response:signup) => {
  const token = this.ajax.verifyToken(response.access_token,'http://localhost/rest_api/angular-signup-with-php/signup');
  if (token)
         {

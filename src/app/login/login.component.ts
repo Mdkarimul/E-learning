@@ -7,6 +7,7 @@ import { AuthControlService } from '../services/auth-control.service';
 import { AjaxService } from '../services/ajax.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { login } from '../interfaces/http.interface';
 
 @Component({
   selector: 'app-login',
@@ -106,7 +107,7 @@ export class LoginComponent implements OnInit {
    formdata.append('auth_key', sessionStorage.auth_key);
 
    const ajax = this.ajax.loginuser(formdata);
-   ajax.subscribe((response: any) => {
+   ajax.subscribe((response:login) => {
      const isvalid =  this.ajax.verifyToken(response.access_token,'http://localhost/rest_api/angular-signup-with-php/login');
      if (isvalid)
     {

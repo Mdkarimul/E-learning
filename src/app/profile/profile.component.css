@@ -13,3 +13,23 @@ mat-drawer
 {
 	background:rgba(255,255,255,0.1);
 }
+
+mat-expansion-panel-header{
+	height:auto;
+	/* border:1px solid red; */
+	padding: 10px 15px;
+}
+mat-expansion-panel-header mat-panel-title{
+background-color: none;
+/* border:1px solid yellow; */
+}
+mat-expansion-panel-header mat-panel-title img{
+	width:35px;
+	height:35px;
+	border-radius:50%;
+}
+
+
+
+
+

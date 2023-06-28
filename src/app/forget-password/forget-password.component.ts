@@ -6,7 +6,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { fade } from '../animation';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { login, resetpassword } from '../interfaces/http.interface';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -47,7 +47,7 @@ this.ajax.getauthkey();
    public errorverificationcode = false;
 
   public usernameform = this.fb.group({
-  username : ['', [Validators.required, Validators.email]],
+  username : ['7mdkarimul@gmail.com', [Validators.required, Validators.email]],
   });
 
 
@@ -76,12 +76,12 @@ this.ajax.getauthkey();
   formdata.append('auth_key', sessionStorage.auth_key);
   formdata.append('username', this.username.value);
   const ajax = this.ajax.finduser(formdata);
-  ajax.subscribe((response: any) => {
-  const verify =  this.ajax.verifyToken(response.access_token, 'http://localhost/angular/email');
+  ajax.subscribe((response:login) => {
+  const verify =  this.ajax.verifyToken(response.access_token,'http://localhost/rest_api/angular-signup-with-php/email');
   if (verify)
   {
   this.v_code = JSON.parse(atob(response.access_token.split('.')[1]));
-  this.v_code =  this.v_code.data.Code;
+  this.v_code =  this.v_code.data.code;
   this.usernameloader = false;
   step.next();
   }
@@ -91,9 +91,6 @@ this.ajax.getauthkey();
   invalid : true
   });
   }
-
-
-
   },
 (error: string) => {
 this.usernameloader = false;
@@ -104,15 +101,12 @@ this.username.setErrors({
   });
 }
   );
-
-
   }
 
 
 
   verifycode(step: MatStepper): void
   {
-
    if (this.code.value == this.v_code)
    {
    this.errorverificationcode = false;
@@ -137,8 +131,7 @@ this.username.setErrors({
   formdata.append('username', this.username.value);
   formdata.append('password', this.password.value);
   const ajax = this.ajax.changepassword(formdata);
-  ajax.subscribe((response: any) => {
-  console.log(response);
+  ajax.subscribe((response:resetpassword) => {
   this.alert.open(response.message, '', {
   duration : 3000
   });
@@ -147,7 +140,6 @@ this.username.setErrors({
   }, 3000);
   },
 (error: any) => {
-	console.log(error);
  this.alert.open(error, '', {
   duration : 3000
   });

@@ -19,7 +19,8 @@ export class ProfileComponent implements AfterViewInit {
   public islogin = false;
   public customdata: any;
   public user_data: any;
-
+  panelOpenState = false;
+  public control = 'maximize';
 
 public menu: any[] = [
 {
@@ -45,8 +46,6 @@ public menu: any[] = [
    },
   ]
 },
-
-
 {
   submenu : true,
   label : 'Branches',
@@ -82,7 +81,6 @@ public menu: any[] = [
   icon : 'account_circle',
   link : 'twitter'
    },
-
   ]
 },
 {
@@ -90,7 +88,6 @@ public menu: any[] = [
   label : 'Branches',
   icon : 'language',
   submenu_items : [
-
    {
    label : 'India',
    icon : 'location_city',
@@ -106,8 +103,8 @@ public menu: any[] = [
 ];
 
 
-public control = 'maximize';
 
+ //detect user device
   ngAfterViewInit(): void {
   if (this.device.isMobile() || this.device.isTablet())
   {
@@ -116,6 +113,7 @@ public control = 'maximize';
   }
   }
 
+ //control navigation  
 sidenavcontrol(): void
 {
  if (this.control == 'maximize')
@@ -130,7 +128,7 @@ sidenavcontrol(): void
 }
 
 
-
+//secure profile page from unauthenticated users
   secure_profile(): void
   {
   if (this.authControl.islogin())
@@ -152,8 +150,9 @@ sidenavcontrol(): void
   this.router.navigateByUrl('');
   }
   }
+
+  //user logout coding 
   logout(){
     this.authControl.logout();
   }
-
 }
